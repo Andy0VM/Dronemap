@@ -1,1 +1,48 @@
-
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Afbeelding met overlay bij hover</title>
+	<style>
+		.container {
+			position: relative;
+			width: 45%;
+			height: 100vh;
+			background-image: url('https://media.discordapp.net/attachments/871426333832527922/1078849407765708880/de7hpw6-5c6f24aa-fa1b-4803-92c6-becd45611335.png');
+			background-size: 85%;
+			background-position: center;
+			overflow: hidden;
+			background-repeat: no-repeat;
+		}
+		.overlay {
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			background-image: url('https://media.discordapp.net/attachments/871426333832527922/1078849335816630402/image.png');
+			background-size: 85%;
+			background-position: center;
+			background-repeat: no-repeat;
+			display: none;
+			pointer-events: none;
+			clip-path: circle(150px at center);
+		}
+		.container:hover .overlay {
+			display: block;
+		}
+	</style>
+</head>
+<body>
+	<div class="container">
+		<div class="overlay"></div>
+	</div>
+	<script>
+		var container = document.querySelector('.container');
+		container.addEventListener('mousemove', function(e){
+			var overlay = document.querySelector('.overlay');
+			var clipPathValue = 'circle(150px at ' + e.clientX + 'px ' + e.clientY + 'px)';
+			overlay.style.clipPath = clipPathValue;
+		});
+	</script>
+</body>
+</html>
